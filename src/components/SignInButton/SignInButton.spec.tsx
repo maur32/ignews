@@ -3,20 +3,10 @@ import {mocked} from "ts-jest/utils";
 import {useSession} from "next-auth/client";
 import {SignInButton} from ".";
 
-jest.mock("next/router", () => {
-  return {
-    useRouter() {
-      return {
-        asPath: "/",
-      };
-    },
-  };
-});
-
 jest.mock("next-auth/client");
 
 describe("SignInButton component", () => {
-  it("renders correctly when user is nott authenticated", () => {
+  it("renders correctly when user is not authenticated", () => {
     const useSessionMocked = mocked(useSession);
 
     useSessionMocked.mockReturnValueOnce([null, false]);
@@ -26,7 +16,7 @@ describe("SignInButton component", () => {
     expect(screen.getByText("Sign in with Github")).toBeInTheDocument();
   });
 
-  it("renders correctly when user is nott authenticated", () => {
+  it("renders correctly when user is authenticated", () => {
     const useSessionMocked = mocked(useSession);
 
     useSessionMocked.mockReturnValueOnce([
