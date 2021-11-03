@@ -4,6 +4,8 @@ import Head from "next/head";
 import {RichText} from "prismic-dom";
 import {getPrismicClient} from "../../services/prismic";
 import styles from "./post.module.scss";
+import {format} from "date-fns";
+import {ptBR} from "date-fns/locale";
 
 interface PostProps {
   post: {
@@ -55,13 +57,10 @@ export const getServerSideProps: GetServerSideProps = async ({req, params}) => {
     slug,
     title: RichText.asText(response.data.title),
     content: RichText.asHtml(response.data.content),
-    updatedAt: new Date(response.last_publication_date).toLocaleDateString(
-      "pt-BR",
-      {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      }
+    updatedAt: format(
+      new Date(response.last_publication_date),
+      "dd 'de' MMMM 'de' yyyy",
+      {locale: ptBR}
     ),
   };
 
