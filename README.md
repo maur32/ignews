@@ -18,3 +18,10 @@ Projeto desenvolvido durante o Ignite na trilha ReactJS, um blog que possui um s
 - [Prismic CMS](https://prismic.io/)
 - [Stripe](https://stripe.com/)
 - [FaunaDB](https://fauna.com/)
+
+<br>
+
+ <img src="./image01.png">
+ <img src="./image02.png">
+ <img src="./image03.png">
+
